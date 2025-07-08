@@ -7,6 +7,7 @@ import ru.app.waterforplant.model.Plant;
 import ru.app.waterforplant.service.PlantService;
 
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,6 +19,11 @@ public class PlantController {
     @PostMapping("/addPlant")
     public Plant addPlant(@RequestBody Plant plant){
         return plantService.addPlant(plant);
+    }
+
+    @GetMapping
+    public List<Plant> allPlant(){
+        return plantService.allPlant();
     }
 
     @GetMapping("/seePlantByName")

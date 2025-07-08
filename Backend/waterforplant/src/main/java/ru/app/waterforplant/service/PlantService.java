@@ -6,6 +6,7 @@ import ru.app.waterforplant.model.Plant;
 import ru.app.waterforplant.repository.PlantsRepo;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -15,6 +16,9 @@ public class PlantService {
         return plantsRepo.save(plant);
     }
 
+    public List<Plant> allPlant(){
+        return plantsRepo.findAll();
+    }
     public Plant seePlantByName(String name){
         return plantsRepo.findPlantByName(name);
     }

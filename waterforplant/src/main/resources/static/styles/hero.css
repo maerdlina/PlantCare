@@ -1,0 +1,81 @@
+.hero {
+    padding: 80px 0 60px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    color: var(--dark);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 1.4rem;
+    color: var(--text-light);
+    max-width: 700px;
+    margin: 0 auto 40px;
+}
+
+.hero-plants {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.plant {
+    width: 120px;
+    height: 180px;
+    position: relative;
+}
+
+.plant .pot {
+    width: 70px;
+    height: 60px;
+    background: var(--accent);
+    border-radius: 0 0 10px 10px;
+    position: absolute;
+    bottom: 0;
+    left: 25px;
+}
+
+.plant .stem {
+    width: 8px;
+    height: 100px;
+    background: var(--primary-dark);
+    position: absolute;
+    bottom: 60px;
+    left: 56px;
+    border-radius: 4px;
+}
+
+.plant .leaf {
+    position: absolute;
+    background: var(--primary);
+    border-radius: 50% 0;
+}
+
+.plant .leaf-1 {
+    width: 40px;
+    height: 30px;
+    top: 70px;
+    left: 20px;
+    transform: rotate(-20deg);
+}
+
+.plant .leaf-2 {
+    width: 50px;
+    height: 40px;
+    top: 50px;
+    left: 40px;
+    transform: rotate(10deg);
+}
+
+.plant .leaf-3 {
+    width: 45px;
+    height: 35px;
+    top: 30px;
+    left: 20px;
+    transform: rotate(-10deg);
+}

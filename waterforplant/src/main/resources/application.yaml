@@ -1,0 +1,19 @@
+server:
+  port: 1234
+  address: 0.0.0.0
+
+spring:
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: UTC
+    serialization:
+      write-date-keys-as-timestamps: false
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: maerdlina
+    password: 1234
+    url: jdbc:postgresql://localhost:5111/postgres

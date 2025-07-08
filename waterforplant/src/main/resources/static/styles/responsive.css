@@ -1,0 +1,93 @@
+@media (max-width: 900px) {
+    .header-content {
+        flex-wrap: wrap;
+    }
+
+    nav ul {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    .plant-item {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .plant-actions {
+        justify-content: center;
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 650px) {
+    nav {
+        display: none;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    .hero h1 {
+        font-size: 2.3rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-text {
+        font-size: 1.5rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .hero-plants {
+        gap: 15px;
+    }
+
+    .plant {
+        width: 90px;
+        height: 150px;
+    }
+
+    .plant .stem {
+        height: 80px;
+    }
+
+    .plant .pot {
+        width: 55px;
+        height: 50px;
+        left: 17px;
+    }
+
+    .action-btn {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+}

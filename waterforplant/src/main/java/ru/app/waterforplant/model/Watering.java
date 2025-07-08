@@ -1,5 +1,6 @@
 package ru.app.waterforplant.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
@@ -23,5 +24,6 @@ public class Watering {
 
     @ManyToOne
     @JoinColumn(name = "plant_id")
+    @JsonBackReference
     private Plant plant;
 }

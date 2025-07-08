@@ -1,4 +1,5 @@
-const API_BASE_URL = 'https://26bd90d641a5.ngrok-free.app';
+// Базовый URL для API
+const API_BASE_URL = 'https://26bd90d641a5.ngrok-free.app'; // Замените на ваш ngrok URL
 
 // DOM элементы
 const plantsContainer = document.getElementById('plantsContainer');
@@ -31,7 +32,7 @@ async function loadPlantsForSelect() {
         plants.forEach(plant => {
             const option = document.createElement('option');
             option.value = plant.id;
-            option.textContent = plant.plant_name; // Исправлено на plant_name
+            option.textContent = plant.plant_name;
             plantSelect.appendChild(option);
         });
 
@@ -39,8 +40,8 @@ async function loadPlantsForSelect() {
         deletePlantSelect.innerHTML = '';
         plants.forEach(plant => {
             const option = document.createElement('option');
-            option.value = plant.plant_name; // Исправлено на plant_name
-            option.textContent = plant.plant_name; // Исправлено на plant_name
+            option.value = plant.plant_name;
+            option.textContent = plant.plant_name;
             deletePlantSelect.appendChild(option);
         });
 
@@ -68,36 +69,35 @@ async function loadPlants() {
         let plantsHTML = '';
 
         plants.forEach(plant => {
-            // Исправлено на last_watering
             const lastWatering = plant.wateringTimes && plant.wateringTimes.length > 0
                 ? new Date(plant.wateringTimes[0].last_watering).toLocaleDateString()
                 : 'ещё не поливали';
 
             plantsHTML += `
-                        <div class="plant-item" data-id="${plant.id}">
-                            <div class="plant-icon">
-                                <i class="fas fa-seedling"></i>
-                            </div>
-                            <div class="plant-info">
-                                <h4>${plant.plant_name}</h4> <!-- Исправлено на plant_name -->
-                                <div class="plant-meta">
-                                    <span>${plant.plant_type}</span> <!-- Исправлено на plant_type -->
-                                    <span>Посажен: ${new Date(plant.date_of_birth).toLocaleDateString()}</span> <!-- Исправлено на date_of_birth -->
-                                </div>
-                            </div>
-                            <div class="watering-date">
-                                Последний полив: ${lastWatering}
-                            </div>
-                            <div class="plant-actions">
-                                <button class="btn action-btn" onclick="openUpdateModal(${plant.id}, '${plant.plant_name}', '${plant.plant_type}', '${plant.date_of_birth}')">
-                                    <i class="fas fa-edit"></i> Изменить
-                                </button>
-                                <button class="btn btn-delete action-btn" onclick="deletePlant('${plant.plant_name}')"> <!-- Исправлено на plant_name -->
-                                    <i class="fas fa-trash"></i> Удалить
-                                </button>
-                            </div>
+                <div class="plant-item" data-id="${plant.id}">
+                    <div class="plant-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="plant-info">
+                        <h4>${plant.plant_name}</h4>
+                        <div class="plant-meta">
+                            <span>${plant.plant_type}</span>
+                            <span>Посажен: ${new Date(plant.date_of_birth).toLocaleDateString()}</span>
                         </div>
-                    `;
+                    </div>
+                    <div class="watering-date">
+                        Последний полив: ${lastWatering}
+                    </div>
+                    <div class="plant-actions">
+                        <button class="btn action-btn" onclick="openUpdateModal(${plant.id}, '${plant.plant_name}', '${plant.plant_type}', '${plant.date_of_birth}')">
+                            <i class="fas fa-edit"></i> Изменить
+                        </button>
+                        <button class="btn btn-delete action-btn" onclick="deletePlant('${plant.plant_name}')">
+                            <i class="fas fa-trash"></i> Удалить
+                        </button>
+                    </div>
+                </div>
+            `;
         });
 
         plantsContainer.innerHTML = plantsHTML;
@@ -112,7 +112,6 @@ async function loadPlants() {
 addPlantForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // Правильные названия полей
     const plant = {
         plant_name: document.getElementById('plantName').value,
         plant_type: document.getElementById('plantType').value,
@@ -134,7 +133,7 @@ addPlantForm.addEventListener('submit', async (e) => {
         }
 
         const newPlant = await response.json();
-        showMessage('addPlantMessage', `Растение "${newPlant.plant_name}" успешно добавлено!`, 'success'); // Исправлено на plant_name
+        showMessage('addPlantMessage', `Растение "${newPlant.plant_name}" успешно добавлено!`, 'success');
         addPlantForm.reset();
 
         // Обновить списки растений
@@ -152,7 +151,6 @@ addWateringForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const plantId = plantSelect.value;
-    // Правильное название поля
     const watering = {
         last_watering: document.getElementById('wateringDate').value
     };
@@ -202,12 +200,12 @@ searchPlantForm.addEventListener('submit', async (e) => {
         const searchResults = document.getElementById('searchResults');
 
         searchResults.innerHTML = `
-                    <div class="message success">
-                        Найдено растение: <strong>${plant.plant_name}</strong><br> <!-- Исправлено на plant_name -->
-                        Тип: ${plant.plant_type}<br> <!-- Исправлено на plant_type -->
-                        Дата посадки: ${new Date(plant.date_of_birth).toLocaleDateString()} <!-- Исправлено на date_of_birth -->
-                    </div>
-                `;
+            <div class="message success">
+                Найдено растение: <strong>${plant.plant_name}</strong><br>
+                Тип: ${plant.plant_type}<br>
+                Дата посадки: ${new Date(plant.date_of_birth).toLocaleDateString()}
+            </div>
+        `;
 
     } catch (error) {
         console.error('Ошибка при поиске растения:', error);
@@ -253,7 +251,6 @@ updatePlantForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const plantId = document.getElementById('updatePlantId').value;
-    // Правильные названия параметров
     const params = new URLSearchParams({
         id: plantId,
         plant_name: document.getElementById('updatePlantName').value,
@@ -272,7 +269,7 @@ updatePlantForm.addEventListener('submit', async (e) => {
         }
 
         const updatedPlant = await response.json();
-        showMessage('updateMessage', `Растение "${updatedPlant.plant_name}" успешно обновлено`, 'success'); // Исправлено на plant_name
+        showMessage('updateMessage', `Растение "${updatedPlant.plant_name}" успешно обновлено`, 'success');
 
         // Закрыть модальное окно через 1.5 секунды
         setTimeout(() => {

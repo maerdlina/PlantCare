@@ -12,6 +12,7 @@ public class CorsConfig implements WebMvcConfigurer {
                 .allowedOrigins(
                         "http://127.0.0.1:5500",
                         "http://localhost:5500",
+                        "https://*.ngrok.io",
                         "https://plantcaresuper.netlify.app"
                         )
                 .allowedMethods("GET", "POST", "PUT", "DELETE")

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WaterForPlant - Уход за растениями</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- Шапка -->
+<header>
+    <div class="container">
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-leaf logo-icon"></i>
+                <div class="logo-text">WaterForPlant</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Главная</a></li>
+                    <li><a href="#" id="showPlantsBtn">Мои растения</a></li>
+                    <li><a href="#" id="addPlantBtn">Добавить растение</a></li>
+                    <li><a href="#" id="addWateringBtn">Добавить полив</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<!-- Герой секция -->
+<section class="hero">
+    <div class="container">
+        <h1>Заботьтесь о ваших растениях с любовью</h1>
+        <p>Управляйте поливом, отслеживайте рост и получайте напоминания для ваших зеленых друзей</p>
+        <a href="#" class="btn" id="getStartedBtn" style="max-width: 250px;">Начать сейчас</a>
+
+        <div class="hero-plants">
+            <div class="plant">
+                <div class="stem"></div>
+                <div class="leaf leaf-1"></div>
+                <div class="leaf leaf-2"></div>
+                <div class="leaf leaf-3"></div>
+                <div class="pot"></div>
+            </div>
+            <div class="plant">
+                <div class="stem"></div>
+                <div class="leaf leaf-1"></div>
+                <div class="leaf leaf-2"></div>
+                <div class="leaf leaf-3"></div>
+                <div class="pot"></div>
+            </div>
+            <div class="plant">
+                <div class="stem"></div>
+                <div class="leaf leaf-1"></div>
+                <div class="leaf leaf-2"></div>
+                <div class="leaf leaf-3"></div>
+                <div class="pot"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Основные действия -->
+<section class="actions">
+    <div class="container">
+        <h2 class="section-title">Управление растениями</h2>
+
+        <div class="cards">
+            <!-- Карточка добавления растения -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-seedling"></i>
+                    <h3>Добавить растение</h3>
+                </div>
+                <div class="card-body">
+                    <form id="addPlantForm">
+                        <div class="form-group">
+                            <label for="plantName">Название растения</label>
+                            <input type="text" id="plantName" class="form-control" placeholder="Фикус, кактус, орхидея..." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="plantType">Тип растения</label>
+                            <input type="text" id="plantType" class="form-control" placeholder="Декоративное, цветущее..." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="birthDate">Дата посадки</label>
+                            <input type="date" id="birthDate" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-block">Добавить растение</button>
+                    </form>
+                    <div id="addPlantMessage" class="message"></div>
+                </div>
+            </div>
+
+            <!-- Карточка добавления полива -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-tint"></i>
+                    <h3>Добавить полив</h3>
+                </div>
+                <div class="card-body">
+                    <form id="addWateringForm">
+                        <div class="form-group">
+                            <label for="plantSelect">Выберите растение</label>
+                            <select id="plantSelect" class="form-control" required>
+                                <option value="">Загрузка растений...</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="wateringDate">Дата полива</label>
+                            <input type="date" id="wateringDate" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-block">Записать полив</button>
+                    </form>
+                    <div id="addWateringMessage" class="message"></div>
+                </div>
+            </div>
+
+            <!-- Карточка управления -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>Управление растениями</h3>
+                </div>
+                <div class="card-body">
+                    <form id="searchPlantForm" style="margin-bottom: 25px;">
+                        <div class="form-group">
+                            <label for="searchPlant">Найти растение</label>
+                            <input type="text" id="searchPlant" class="form-control" placeholder="Введите название...">
+                        </div>
+                        <button type="submit" class="btn btn-block">Найти</button>
+                    </form>
+
+                    <div id="searchResults" class="message"></div>
+
+                    <div class="form-group">
+                        <label for="deletePlant">Удалить растение</label>
+                        <select id="deletePlant" class="form-control">
+                            <option value="">Загрузка растений...</option>
+                        </select>
+                    </div>
+                    <button id="deletePlantBtn" class="btn btn-block btn-delete">Удалить растение</button>
+                    <div id="deleteMessage" class="message"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Список растений -->
+<section class="container">
+    <div class="plant-list">
+        <h2 class="section-title">Мои растения</h2>
+
+        <div id="plantsContainer">
+            <div class="loading">
+                <i class="fas fa-spinner"></i>
+                <p>Загрузка растений...</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Модальное окно для обновления растения -->
+<div class="modal" id="updatePlantModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title">Обновить растение</h3>
+            <span class="close-modal">&times;</span>
+        </div>
+        <form id="updatePlantForm">
+            <input type="hidden" id="updatePlantId">
+            <div class="form-group">
+                <label for="updatePlantName">Название растения</label>
+                <input type="text" id="updatePlantName" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="updatePlantType">Тип растения</label>
+                <input type="text" id="updatePlantType" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="updateBirthDate">Дата посадки</label>
+                <input type="date" id="updateBirthDate" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-update btn-block">Обновить растение</button>
+        </form>
+        <div id="updateMessage" class="message"></div>
+    </div>
+</div>
+
+<!-- Подвал -->
+<footer>
+    <div class="container">
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p>© 2023 WaterForPlant. Все права защищены.</p>
+        <p>С любовью к вашим растениям</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

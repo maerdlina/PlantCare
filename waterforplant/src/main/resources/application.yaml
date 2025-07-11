@@ -10,7 +10,7 @@ spring:
       write-date-keys-as-timestamps: false
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     show-sql: true
   datasource:
     driver-class-name: org.postgresql.Driver

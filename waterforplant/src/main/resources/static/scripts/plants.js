@@ -1,5 +1,5 @@
 // plants.js - работа с растениями (обновлённая версия)
-const API_BASE_URL = 'https://26bd90d641a5.ngrok-free.app';
+const API_BASE_URL = 'https://d6963bb7b7b3.ngrok-free.app';
 
 document.addEventListener('DOMContentLoaded', function() {
     // Загрузка растений при старте
